@@ -90,6 +90,7 @@ pages.forEach((page) => {
 });
 
 export const Page = ({ number, front, back, page, opened, bookClosed, ...props }) => {
+  const [, setPage] = useAtom(pageAtom);  // Get the setPage function here
 
   const [picture, picture2] = useTexture([
     `/textures/${front}.jpg`,
@@ -229,7 +230,7 @@ export const Page = ({ number, front, back, page, opened, bookClosed, ...props }
       }}
       onClick={(e) => {
         e.stopPropagation();
-        setPage(opened ? number : number + 1);
+        setPage(opened ? number : number + 1); // Here, update the page number
         setHighlighted(false);
       }}
     >
